@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="page-title">My Orders</h1>
+
+  @if (orders.length === 0) {
+    <div class="empty">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-border)" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <p>No orders yet</p>
+      <a routerLink="/shop" class="shop-btn">Start Shopping</a>
+    </div>
+  } @else {
+    <div class="orders-list">
+      @for (order of orders; track order.id) {
+        <div class="order-card">
+          <div class="order-header">
+            <div class="order-meta">
+              <span class="order-id">{{ order.id }}</span>
+              <span class="order-date">{{ order.date }}</span>
+            </div>
+            <span class="order-status" [class]="getStatusClass(order.status)">{{ order.status }}</span>
+          </div>
+
+          <div class="order-items">
+            @for (item of order.items; track item.product.id) {
+              <div class="order-item">
+                <img [src]="item.product.image" [alt]="item.product.name" />
+                <div class="oi-info">
+                  <span class="oi-name">{{ item.product.name }}</span>
+                  <span class="oi-qty">Qty: {{ item.quantity }} × ₹{{ item.product.discount > 0 ? (item.product.price * (1 - item.product.discount / 100)).toFixed(0) : item.product.price }}</span>
+                </div>
+              </div>
+            }
+          </div>
+
+          <div class="order-footer">
+            <span class="order-total-label">Total</span>
+            <span class="order-total">₹{{ order.total.toFixed(0) }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

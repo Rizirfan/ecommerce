@@ -1,0 +1,133 @@
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 28px;
+}
+
+.empty {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.empty p {
+  color: var(--color-text-muted);
+  margin: 16px 0 24px;
+  font-size: 15px;
+}
+
+.shop-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: var(--color-accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.order-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.order-meta { display: flex; align-items: center; gap: 12px; }
+
+.order-id {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.order-date {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.order-status {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.status-confirmed { background: rgba(5,150,105,0.08); color: var(--color-green); }
+.status-processing { background: rgba(37,99,235,0.08); color: var(--color-blue); }
+.status-shipped { background: rgba(217,119,6,0.08); color: var(--color-accent); }
+.status-delivered { background: rgba(5,150,105,0.12); color: #15803d; }
+
+.order-items {
+  padding: 14px 18px;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.order-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-alt);
+}
+
+.oi-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.oi-qty {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.order-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--color-border);
+}
+
+.order-total-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.order-total {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+}

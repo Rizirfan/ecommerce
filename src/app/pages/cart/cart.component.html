@@ -1,0 +1,77 @@
+<div class="container">
+  <h1 class="page-title">Cart</h1>
+
+  @if (items.length === 0) {
+    <div class="empty">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-border)" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <p>Your cart is empty</p>
+      <a routerLink="/shop" class="shop-btn">Start Shopping</a>
+    </div>
+  } @else {
+    <div class="cart-layout">
+      <div class="cart-items">
+        @for (item of items; track item.product.id) {
+          <div class="cart-item">
+            <img [src]="item.product.image" [alt]="item.product.name" />
+            <div class="item-info">
+              <a [routerLink]="['/product', item.product.id]" class="item-name">{{ item.product.name }}</a>
+              <span class="item-cat">{{ item.product.category }}</span>
+              <div class="item-prices">
+                <span>₹{{ getDiscountedPrice(item.product) }}</span>
+                @if (item.product.discount > 0) {
+                  <span class="item-original">₹{{ item.product.price }}</span>
+                }
+              </div>
+            </div>
+            <div class="item-qty">
+              <button (click)="updateQty(item.product.id, item.quantity - 1)">−</button>
+              <span>{{ item.quantity }}</span>
+              <button (click)="updateQty(item.product.id, item.quantity + 1)">+</button>
+            </div>
+            <div class="item-subtotal">₹{{ (getDiscountedPrice(item.product) * item.quantity).toFixed(0) }}</div>
+            <button class="remove-btn" (click)="remove(item.product.id)" aria-label="Remove item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+        }
+      </div>
+
+      <div class="cart-summary">
+        <h3>Order Summary</h3>
+
+        @if (amountForFreeDelivery > 0) {
+          <div class="delivery-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" [style.width.%]="deliveryProgress"></div>
+            </div>
+            <span class="progress-text">Add ₹{{ amountForFreeDelivery }} more for free delivery</span>
+          </div>
+        } @else {
+          <div class="free-delivery-msg">✓ You've unlocked free delivery!</div>
+        }
+
+        <div class="summary-rows">
+          <div class="summary-row">
+            <span>Subtotal ({{ itemCount }} items)</span>
+            <span>₹{{ total.toFixed(0) }}</span>
+          </div>
+          <div class="summary-row">
+            <span>Delivery</span>
+            @if (delivery === 0) {
+              <span class="free">FREE</span>
+            } @else {
+              <span>₹{{ delivery }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="summary-total">
+          <span>Grand Total</span>
+          <span>₹{{ grandTotal.toFixed(0) }}</span>
+        </div>
+
+        <a routerLink="/checkout" class="checkout-btn">Proceed to Checkout</a>
+      </div>
+    </div>
+  }
+</div>

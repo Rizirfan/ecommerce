@@ -1,0 +1,38 @@
+<div class="container">
+  <h1 class="page-title">Wishlist</h1>
+
+  @if (items.length === 0) {
+    <div class="empty">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--color-border)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <p>Your wishlist is empty</p>
+      <a routerLink="/shop" class="shop-btn">Browse Products</a>
+    </div>
+  } @else {
+    <div class="wishlist-grid">
+      @for (item of items; track item.product.id) {
+        <div class="wishlist-card">
+          <a [routerLink]="['/product', item.product.id]" class="card-image">
+            <img [src]="item.product.image" [alt]="item.product.name" />
+            @if (item.product.discount > 0) {
+              <span class="discount-badge">-{{ item.product.discount }}%</span>
+            }
+          </a>
+          <div class="card-body">
+            <span class="card-category">{{ item.product.category }}</span>
+            <a [routerLink]="['/product', item.product.id]" class="card-name">{{ item.product.name }}</a>
+            <div class="card-prices">
+              <span class="current-price">₹{{ getDiscountedPrice(item.product) }}</span>
+              @if (item.product.discount > 0) {
+                <span class="original-price">₹{{ item.product.price }}</span>
+              }
+            </div>
+            <div class="card-actions">
+              <button class="btn-move" (click)="moveToCart(item.product.id)">Move to Cart</button>
+              <button class="btn-remove" (click)="remove(item.product.id)">Remove</button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

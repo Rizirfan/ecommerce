@@ -1,0 +1,82 @@
+<section class="hero">
+  <div class="hero-container">
+    <span class="hero-badge">Stationery Essentials</span>
+    <h1>Everything you need<br/><span>to create.</span></h1>
+    <p>Notebooks, pens, pencils, art supplies and more. Curated collections for students, artists, and professionals.</p>
+    <div class="hero-actions">
+      <a routerLink="/shop" class="hero-btn primary">Shop All</a>
+      <a routerLink="/shop" [queryParams]="{category:'Art Supplies'}" class="hero-btn secondary">Art Supplies</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Categories</h2>
+        <p class="section-sub">Browse by type</p>
+      </div>
+    </div>
+    <div class="categories">
+      @for (cat of categories; track cat) {
+        <a [routerLink]="['/shop']" [queryParams]="{category: cat}" class="cat-card">
+          <span class="cat-icon">{{ getCatIcon(cat) }}</span>
+          <span class="cat-name">{{ cat }}</span>
+          <span class="cat-count">{{ getCount(cat) }} items</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Best Sellers</h2>
+        <p class="section-sub">Top-rated products</p>
+      </div>
+      <a routerLink="/shop" class="view-all">View All →</a>
+    </div>
+    <div class="products-grid">
+      @for (product of bestSellers; track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">New Arrivals</h2>
+        <p class="section-sub">Fresh in stock</p>
+      </div>
+      <a routerLink="/shop" class="view-all">View All →</a>
+    </div>
+    <div class="products-grid">
+      @for (product of newArrivals; track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Special Offers</h2>
+        <p class="section-sub">Save more on favorites</p>
+      </div>
+      <a routerLink="/shop" class="view-all">View All →</a>
+    </div>
+    <div class="products-grid">
+      @for (product of specialOffers; track product.id) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,97 @@
+@if (product) {
+  <div class="container">
+    <a routerLink="/shop" class="back-link">&larr; Back to Shop</a>
+
+    <div class="detail-grid">
+      <div class="detail-image">
+        <img [src]="product.image" [alt]="product.name" />
+        @if (product.discount > 0) {
+          <span class="discount-badge">-{{ product.discount }}%</span>
+        }
+      </div>
+
+      <div class="detail-info">
+        <span class="detail-category">{{ product.category }}</span>
+        <h1>{{ product.name }}</h1>
+
+        <div class="detail-rating">
+          <span class="stars">{{ stars }}</span>
+          <span class="rating-text">{{ product.rating }} / 5</span>
+        </div>
+
+        <div class="detail-price">
+          <span class="current-price">₹{{ discountedPrice }}</span>
+          @if (product.discount > 0) {
+            <span class="original-price">₹{{ product.price }}</span>
+            <span class="save-badge">Save ₹{{ product.price - discountedPrice }}</span>
+          }
+        </div>
+
+        <p class="detail-desc">{{ product.description }}</p>
+
+        <div class="detail-stock">
+          @if (product.stock > 10) {
+            <span class="in-stock">● In Stock ({{ product.stock }} available)</span>
+          } @else if (product.stock > 0) {
+            <span class="low-stock">● Only {{ product.stock }} left — order soon!</span>
+          } @else {
+            <span class="out-of-stock">● Out of Stock</span>
+          }
+        </div>
+
+        <div class="detail-actions">
+          <div class="qty-selector">
+            <button (click)="decrementQty()">−</button>
+            <span>{{ quantity }}</span>
+            <button (click)="incrementQty()">+</button>
+          </div>
+          <button class="btn-cart" (click)="addToCart()" [disabled]="product.stock === 0">Add to Cart</button>
+          <button class="btn-buy" (click)="buyNow()" [disabled]="product.stock === 0">Buy Now</button>
+        </div>
+
+        <button class="btn-wishlist" [class.active]="inWishlist" (click)="toggleWishlist()">
+          <svg width="16" height="16" viewBox="0 0 24 24" [attr.fill]="inWishlist ? '#ef4444' : 'none'" stroke="currentColor" stroke-width="2">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          {{ inWishlist ? 'In Wishlist' : 'Add to Wishlist' }}
+        </button>
+
+        @if (addedMessage) {
+          <div class="toast">{{ addedMessage }}</div>
+        }
+      </div>
+    </div>
+
+    @if (Object.keys(product.specifications || {}).length > 0) {
+      <div class="specs-section">
+        <h3>Specifications</h3>
+        <div class="specs-grid">
+          @for (entry of Object.entries(product.specifications || {}); track entry[0]) {
+            <div class="spec-row">
+              <span class="spec-key">{{ entry[0] }}</span>
+              <span class="spec-val">{{ entry[1] }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    @if (relatedProducts.length > 0) {
+      <div class="related-section">
+        <h2 class="section-title">Related Products</h2>
+        <div class="products-grid">
+          @for (p of relatedProducts; track p.id) {
+            <app-product-card [product]="p" />
+          }
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <div class="container">
+    <div class="not-found">
+      <h2>Product not found</h2>
+      <a routerLink="/shop">Browse Products</a>
+    </div>
+  </div>
+}
