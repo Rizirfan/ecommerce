@@ -1,44 +1,113 @@
 <footer class="footer">
+  <div class="footer-trust">
+    <div class="footer-container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div>
+            <h6>Free Shipping</h6>
+            <p>On orders above ₹499</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div>
+            <h6>100% Authentic</h6>
+            <p>Direct from top brands</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h6>Fast Delivery</h6>
+            <p>Pan-India Express Delivery</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </div>
+          <div>
+            <h6>Easy Returns</h6>
+            <p>7-day hassle-free returns</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="footer-container">
     <div class="footer-top">
       <div class="footer-brand">
-        <h4><span class="footer-logo">P</span> PAPER<span>LY</span></h4>
-        <p>Everything you need to create. Premium stationery for students, artists, and professionals.</p>
+        <h4>
+          <span class="footer-logo">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </span>
+          PAPER<span>LY</span>
+        </h4>
+        <p>Curated premium stationery, journals, fine writing instruments, and workspace essentials for creators, students, and professionals.</p>
         <div class="newsletter">
-          <input type="email" placeholder="Enter your email" />
+          <input type="email" placeholder="Enter your email address" />
           <button>Subscribe</button>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
         </div>
       </div>
 
       <div class="footer-col">
         <h5>Shop</h5>
-        <a routerLink="/shop" [queryParams]="{category:'Notebooks'}">Notebooks</a>
-        <a routerLink="/shop" [queryParams]="{category:'Pens'}">Pens</a>
-        <a routerLink="/shop" [queryParams]="{category:'Pencils'}">Pencils</a>
+        <a routerLink="/shop" [queryParams]="{category:'Notebooks'}">Notebooks & Journals</a>
+        <a routerLink="/shop" [queryParams]="{category:'Pens'}">Fine Pens & Gel Pens</a>
+        <a routerLink="/shop" [queryParams]="{category:'Pencils'}">Drafting Pencils</a>
+        <a routerLink="/shop" [queryParams]="{category:'Highlighters'}">Pastel Highlighters</a>
         <a routerLink="/shop" [queryParams]="{category:'Art Supplies'}">Art Supplies</a>
       </div>
 
       <div class="footer-col">
         <h5>Categories</h5>
+        <a routerLink="/shop" [queryParams]="{category:'Notebooks'}">Notebooks & Journals</a>
+        <a routerLink="/shop" [queryParams]="{category:'Pens'}">Pens & Fineliners</a>
+        <a routerLink="/shop" [queryParams]="{category:'Pencils'}">Pencils & Mechanical</a>
         <a routerLink="/shop" [queryParams]="{category:'Highlighters'}">Highlighters</a>
-        <a routerLink="/shop" [queryParams]="{category:'Sticky Notes'}">Sticky Notes</a>
-        <a routerLink="/shop" [queryParams]="{category:'Calculators'}">Calculators</a>
-        <a routerLink="/shop" [queryParams]="{category:'Desk Accessories'}">Desk Accessories</a>
+        <a routerLink="/shop" [queryParams]="{category:'Sticky Notes'}">Sticky Notes & Pads</a>
+        <a routerLink="/shop" [queryParams]="{category:'Art Supplies'}">Art Supplies & Paints</a>
+        <a routerLink="/shop" [queryParams]="{category:'Papers & Note Pads'}">Papers & Note Pads</a>
       </div>
 
       <div class="footer-col">
-        <h5>Help</h5>
-        <a routerLink="/">About Us</a>
-        <a routerLink="/">Contact</a>
-        <a routerLink="/">Shipping Policy</a>
-        <a routerLink="/">Returns & Refunds</a>
+        <h5>Contact & Support</h5>
+        <span class="contact-info">support&#64;paperly.in</span>
+        <span class="contact-info">+91 800 123 4567</span>
+        <span class="contact-info">Mon - Sat: 9am - 6pm</span>
+        <a routerLink="/">Help Center & FAQs</a>
+        <a routerLink="/">Shipping & Tracking</a>
+        <a routerLink="/">Returns & Refund Policy</a>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 PAPERLY. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <span>Made with care for stationery lovers.</span>
+      <p>&copy; 2026 PAPERLY Stationers Inc. All rights reserved.</p>
+      <div class="payment-badges">
+        <span class="pay-tag">UPI</span>
+        <span class="pay-tag">VISA</span>
+        <span class="pay-tag">Mastercard</span>
+        <span class="pay-tag">Net Banking</span>
+        <span class="pay-tag">COD Available</span>
       </div>
     </div>
   </div>

@@ -1,7 +1,49 @@
 .footer {
-  background: var(--color-primary);
-  color: #d1d5db;
+  background: #0f172a;
+  color: #94a3b8;
   margin-top: 80px;
+}
+
+.footer-trust {
+  border-bottom: 1px solid #1e293b;
+  background: #1e293b;
+  padding: 24px 0;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trust-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.trust-item h6 {
+  color: #f8fafc;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.trust-item p {
+  color: #94a3b8;
+  font-size: 11px;
 }
 
 .footer-container {
@@ -19,15 +61,14 @@
 
 .footer-brand h4 {
   font-size: 20px;
-  color: #fff;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 0;
+  gap: 6px;
 }
-
-.footer-brand h4 span:not(.footer-logo) { color: #fff; font-weight: 800; }
-.footer-brand span { color: #d97706; }
 
 .footer-logo {
   display: inline-flex;
@@ -36,37 +77,44 @@
   width: 28px;
   height: 28px;
   background: var(--color-accent);
-  color: #fff;
+  color: #ffffff;
   border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 800;
-  margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.footer-brand h4 span:not(.footer-logo) {
+  color: #ffffff;
+  font-weight: 800;
 }
 
 .footer-brand p {
   font-size: 13px;
   line-height: 1.7;
   margin-bottom: 20px;
-  max-width: 280px;
+  max-width: 320px;
+  color: #94a3b8;
 }
 
 .newsletter {
   display: flex;
   gap: 0;
+  margin-bottom: 20px;
 }
 
 .newsletter input {
   flex: 1;
   padding: 10px 14px;
-  border: 1px solid #374151;
-  background: #1f2937;
+  border: 1px solid #334155;
+  background: #1e293b;
   color: #fff;
   border-radius: var(--radius-sm) 0 0 var(--radius-sm);
   font-size: 13px;
   outline: none;
 }
 
-.newsletter input::placeholder { color: #6b7280; }
+.newsletter input::placeholder { color: #64748b; }
 .newsletter input:focus { border-color: var(--color-accent); }
 
 .newsletter button {
@@ -78,44 +126,92 @@
   font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
+  cursor: pointer;
+  transition: background var(--transition);
 }
 
 .newsletter button:hover { background: var(--color-accent-hover); }
 
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1e293b;
+  color: #94a3b8;
+  transition: all var(--transition);
+}
+
+.social-links a:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+}
+
 .footer-col h5 {
-  color: #fff;
-  font-size: 13px;
-  margin-bottom: 14px;
+  color: #f8fafc;
+  font-size: 12px;
+  margin-bottom: 16px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  font-weight: 700;
 }
 
 .footer-col a {
   display: block;
   font-size: 13px;
-  color: #9ca3af;
-  padding: 5px 0;
+  color: #94a3b8;
+  padding: 6px 0;
   transition: color var(--transition);
 }
 
-.footer-col a:hover { color: #fff; }
+.footer-col a:hover { color: #f8fafc; }
+
+.contact-info {
+  display: block;
+  font-size: 13px;
+  color: #cbd5e1;
+  padding: 3px 0;
+  font-weight: 500;
+}
 
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  border-top: 1px solid #1f2937;
+  padding: 24px 0;
+  border-top: 1px solid #1e293b;
 }
 
 .footer-bottom p {
   font-size: 12px;
-  color: #6b7280;
+  color: #64748b;
 }
 
-.footer-bottom-links span {
-  font-size: 12px;
-  color: #4b5563;
+.payment-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pay-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: #1e293b;
+  color: #cbd5e1;
+  border: 1px solid #334155;
+}
+
+@media (max-width: 1024px) {
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -123,6 +219,7 @@
 }
 
 @media (max-width: 480px) {
+  .trust-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
 }

@@ -17,22 +17,11 @@ export class HomeComponent {
   newArrivals: Product[] = [];
   specialOffers: Product[] = [];
 
-  private categoryIcons: { [key: string]: string } = {
-    'Notebooks': '📓', 'Pens': '🖊️', 'Pencils': '✏️', 'Highlighters': '🖍️',
-    'Sticky Notes': '📝', 'Files & Folders': '📁', 'Calculators': '🔢',
-    'Art Supplies': '🎨', 'Desk Accessories': '🗂️', 'Papers & Note Pads': '📄',
-    'Study Kits': '🎒'
-  };
-
   constructor(private productService: ProductService) {
     this.categories = this.productService.getCategories();
     this.bestSellers = this.productService.getBestSellers();
     this.newArrivals = this.productService.getNewArrivals();
     this.specialOffers = this.productService.getSpecialOffers();
-  }
-
-  getCatIcon(cat: string): string {
-    return this.categoryIcons[cat] || '📦';
   }
 
   getCount(cat: string): number {

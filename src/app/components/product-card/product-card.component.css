@@ -92,15 +92,15 @@
   margin-bottom: 10px;
 }
 
-.stars {
-  color: var(--color-yellow);
-  font-size: 12px;
-  letter-spacing: 1px;
+.star-icon {
+  display: inline-flex;
+  align-items: center;
 }
 
 .rating-num {
   font-size: 12px;
-  color: var(--color-text-muted);
+  font-weight: 600;
+  color: var(--color-text-secondary);
 }
 
 .card-footer {
@@ -130,7 +130,45 @@
   border-radius: var(--radius-sm);
   font-size: 12px;
   font-weight: 600;
+  border: none;
   transition: background var(--transition);
 }
 
 .add-btn:hover { background: var(--color-accent); }
+
+.card-qty-control {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  height: 28px;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition);
+}
+
+.qty-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.qty-val {
+  padding: 0 4px;
+  font-size: 12px;
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+}

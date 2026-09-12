@@ -1,10 +1,13 @@
 @if (product) {
   <div class="container">
-    <a routerLink="/shop" class="back-link">&larr; Back to Shop</a>
+    <a routerLink="/shop" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Shop
+    </a>
 
     <div class="detail-grid">
       <div class="detail-image">
-        <img [src]="product.image" [alt]="product.name" />
+        <img [src]="product.image" [alt]="product.name" loading="eager" decoding="async" />
         @if (product.discount > 0) {
           <span class="discount-badge">-{{ product.discount }}%</span>
         }
@@ -15,8 +18,10 @@
         <h1>{{ product.name }}</h1>
 
         <div class="detail-rating">
-          <span class="stars">{{ stars }}</span>
-          <span class="rating-text">{{ product.rating }} / 5</span>
+          <span class="star-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </span>
+          <span class="rating-text">{{ product.rating }} / 5.0</span>
         </div>
 
         <div class="detail-price">

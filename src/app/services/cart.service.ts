@@ -24,25 +24,28 @@ export class CartService {
   }
 
   private saveCart(items: CartItem[]): void {
-    localStorage.setItem(this.CART_KEY, JSON.stringify(items));
-    this.cartItems$.next(items);
+    const copy = [...items];
+    localStorage.setItem(this.CART_KEY, JSON.stringify(copy));
+    this.cartItems$.next(copy);
   }
 
   private saveWishlist(items: WishlistItem[]): void {
-    localStorage.setItem(this.WISHLIST_KEY, JSON.stringify(items));
-    this.wishlistItems$.next(items);
+    const copy = [...items];
+    localStorage.setItem(this.WISHLIST_KEY, JSON.stringify(copy));
+    this.wishlistItems$.next(copy);
   }
 
   private saveOrders(items: Order[]): void {
-    localStorage.setItem(this.ORDERS_KEY, JSON.stringify(items));
-    this.ordersItems$.next(items);
+    const copy = [...items];
+    localStorage.setItem(this.ORDERS_KEY, JSON.stringify(copy));
+    this.ordersItems$.next(copy);
   }
 
   // Cart
   getCartItems(): CartItem[] { return this.cartItems$.value; }
 
   addToCart(product: Product, quantity: number = 1): void {
-    const items = this.getCartItems();
+    const items = this.getCartItems().map(i => ({ ...i }));
     const existing = items.find(i => i.product.id === product.id);
     if (existing) {
       existing.quantity += quantity;
@@ -54,6 +57,24 @@ export class CartService {
 
   removeFromCart(productId: number): void {
     this.saveCart(this.getCartItems().filter(i => i.product.id !== productId));
+  }
+
+  getCartItemQuantity(productId: number): number {
+    const item = this.getCartItems().find(i => i.product.id === productId);
+    return item ? item.quantity : 0;
+  }
+
+  decrementQuantity(productId: number): void {
+    const items = this.getCartItems().map(i => ({ ...i }));
+    const item = items.find(i => i.product.id === productId);
+    if (item) {
+      if (item.quantity > 1) {
+        item.quantity -= 1;
+        this.saveCart(items);
+      } else {
+        this.removeFromCart(productId);
+      }
+    }
   }
 
   updateCartQuantity(productId: number, quantity: number): void {

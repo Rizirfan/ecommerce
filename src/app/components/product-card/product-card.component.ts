@@ -27,14 +27,26 @@ export class ProductCardComponent {
     return this.cartService.isInWishlist(this.product.id);
   }
 
-  get stars(): string {
-    return '★'.repeat(Math.floor(this.product.rating)) + '☆'.repeat(5 - Math.floor(this.product.rating));
+  get cartQuantity(): number {
+    return this.cartService.getCartItemQuantity(this.product.id);
   }
 
   addToCart(event: Event): void {
     event.preventDefault();
     event.stopPropagation();
     this.cartService.addToCart(this.product);
+  }
+
+  incrementQty(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+    this.cartService.addToCart(this.product, 1);
+  }
+
+  decrementQty(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+    this.cartService.decrementQuantity(this.product.id);
   }
 
   toggleWishlist(event: Event): void {

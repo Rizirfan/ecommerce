@@ -193,6 +193,9 @@
 }
 
 .free-delivery-msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 13px;
   color: var(--color-green);
   font-weight: 500;
